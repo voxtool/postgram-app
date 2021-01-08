@@ -32,9 +32,7 @@ const { Room } = require('./models');
         }));
         app.use('/api', apiRouter);
         app.use(errorHandler);
-        app.get('/', (req, res, next) => {
-            res.status(200).send(path.resolve(__basedir, 'static', 'index.html'));
-        });
+
         const server = http.createServer(app);
         const io = socket(server, {
             cors: {
@@ -65,7 +63,9 @@ const { Room } = require('./models');
                 console.log('socket disconnected: ' + socket.id);
             });
         });
-
+        app.get('/', (req, res) => {
+            res.status(200).sendFile(path.join(__basedir, '/static', 'index.html'));
+        });
         server.listen(config.port, console.log(`Listening on port ${config.port}...`));
     } catch (error) {
         console.error(error);
