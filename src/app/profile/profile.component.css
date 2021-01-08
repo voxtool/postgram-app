@@ -1,0 +1,31 @@
+mat-card {
+    margin-bottom: 1em;
+}
+
+.profile-image {
+    background-image: url('https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png');
+    background-size: cover;
+  }
+  
+.small-card img{
+    height: 20em;
+    object-fit: cover;
+}
+
+.del-btn {
+    background-color: #DE5246;
+    color: white;
+}
+
+.like-btn {
+    background-color: #673AB7;
+    color: white;
+}
+
+.upload-btn {
+    margin-left: 2em;
+    background-color: #673AB7;
+    color: white;
+}
+
+

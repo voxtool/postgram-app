@@ -1,0 +1,29 @@
+h1 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.form-container {
+    text-align: center;
+}
+
+.form-control {
+    padding: 1em;
+}
+
+input {
+    padding: 1em 2em;
+}
+
+textarea {
+    padding: 1em 1em;
+    min-width: 20em;
+    min-height: 5em;
+}
+
+button {
+    margin-top: 1em;
+    padding: 0.5em 4em;
+    background-color: #673AB7;
+    color: white;
+}

@@ -1,0 +1,22 @@
+.about {
+    padding: 3em 0;
+}
+
+.about h1 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.about p {
+    text-align: center;
+    font-size: 1rem;
+    padding: 1em 0;
+}
+
+.join-btn {
+    background-color:#673AB7;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 1.5em 0;
+}

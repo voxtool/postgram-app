@@ -1,0 +1,29 @@
+<mat-card class="mat-elevation-z2">
+  <mat-card-header>
+    <div mat-card-avatar class="profile-image"></div>
+    <mat-card-title>{{user?.username}}<a *ngIf="user?._id === currentUser?._id" routerLink="/upload" mat-button
+        class="upload-btn">Upload Photo</a><a *ngIf="user?._id !== currentUser?._id" [routerLink]="['/chat', user?.username]" mat-button>
+        <mat-icon> mail_outline</mat-icon>
+      </a></mat-card-title>
+  </mat-card-header>
+</mat-card>
+<div class="container" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="start" fxLayoutGap="25px">
+  <mat-card *ngFor="let photo of photos" class="mat-elevation-z4" class="small-card" fxFlex="0 0 calc(25%-25px)"
+    fxFlexFill fxFlex.lt-md="calc(50%-25px)">
+    <img mat-card-image [src]="photo.imageUrl">
+    <mat-card-actions>
+      <a [routerLink]="['/profile', user?._id, 'photos', photo._id]" mat-button>Details</a>
+      <button *ngIf="user?._id === currentUser?._id" mat-button class="del-btn" (click)="deleteOne(photo._id)">
+        <mat-icon>highlight_off</mat-icon>
+      </button>
+      <button *ngIf="user?._id !== currentUser?._id && !photo?.likes.includes(currentUser?._id)" mat-button
+        class="like-btn" (click)="like(photo._id)">
+        <mat-icon>thumb_up</mat-icon>
+      </button>
+      <button *ngIf="user?._id !== currentUser?._id && photo?.likes.includes(currentUser?._id)" mat-button
+        class="like-btn" (click)="unlike(photo._id)">
+        <mat-icon>thumb_down</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

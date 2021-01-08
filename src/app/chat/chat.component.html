@@ -1,0 +1,26 @@
+<div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="center">
+    <mat-card class="mat-elevation-z4" fxFlex="25%" fxFlex.lt-md="100%">
+        <mat-card-content class="container" fxLayout="column" fxLayout.lt-md="column" fxLayoutAlign="start"
+            fxLayoutGap="10px" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+            <mat-card *ngFor="let message of messages" class="mat-elevation-z4" class="comment">
+                <mat-card-header>
+                    <div mat-card-avatar class="profile-image"></div>
+                    <mat-card-title>{{message.sender}}
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        <p>{{message.message}}</p>
+                    </mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+        </mat-card-content>
+        <div class="form-container">
+            <form #chatForm="ngForm" (ngSubmit)="chatHandler(chatForm.value); chatForm.resetForm()">
+                <input #textInput="ngModel" matInput placeholder="Write your message here..." type="text" name="comment"
+                    required maxlength="150" ngModel>
+                <button mat-button class="post-btn" [disabled]="chatForm.invalid">
+                    <mat-icon>send</mat-icon>
+                </button>
+            </form>
+        </div>
+    </mat-card>
+</div>

@@ -1,0 +1,29 @@
+<div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="center" fxLayoutGap="10px">
+  <mat-card class="mat-elevation-z4" fxFlex="0 0 calc(50%-10px)" fxFlex.lt-md="calc(100%-10px)" class="image">
+    <p class="text">{{photo?.description}}</p>
+    <img [src]="photo?.imageUrl" width="100%">
+  </mat-card>
+  <mat-card class="mat-elevation-z4" fxFlex="0 0 calc(25%-10px)" fxFlex.lt-md="calc(100%-10px)">
+    <form #commentForm="ngForm" (ngSubmit)="commentHandler(commentForm.value); commentForm.resetForm()">
+      <input #imageInput="ngModel" matInput placeholder="Write your comment here..." type="text" name="comment"
+        required maxlength="150" ngModel>
+      <button mat-button class="post-btn" [disabled]="commentForm.invalid"><mat-icon>send</mat-icon></button>
+    </form>
+    <mat-card-content class="container" fxLayout="column" fxLayoutAlign="start"
+      fxLayoutGap="10px">
+      <mat-card *ngFor="let comment of comments" class="mat-elevation-z4" class="text">
+        <mat-card-header>
+          <div mat-card-avatar class="profile-image"></div>
+          <mat-card-title><a [routerLink]="['/profile', comment.userId._id]">{{comment.userId.username}}</a>
+            <button *ngIf="comment.userId._id === currentUser?._id" mat-button (click)="deleteComment(comment._id)">
+              <mat-icon>highlight_off</mat-icon>
+            </button>
+          </mat-card-title>
+          <mat-card-subtitle>
+            <p>{{comment.text}}</p>
+          </mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

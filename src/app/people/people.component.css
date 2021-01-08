@@ -1,0 +1,18 @@
+h1 {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+mat-card {
+    margin-bottom: 1em;
+}
+
+.profile-image {
+    background-image: url('https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png');
+    background-size: cover;
+}
+
+.follow-btn {
+    background-color: #673AB7;
+    color: white;
+}

@@ -1,0 +1,30 @@
+<div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="center">
+  <mat-card class="mat-elevation-z4" fxFlex="50%" fxFlex.lt-md="100%">
+    <h1>Login</h1>
+    <div class="form-container">
+      <div *ngIf="errorMessage">
+        <mat-error>{{errorMessage}}</mat-error>
+      </div>
+      <form #loginForm="ngForm" (ngSubmit)="loginHandler(loginForm.value); loginForm.resetForm();">
+        <div class="form-control">
+          <input #emailInput="ngModel" matInput placeholder="Enter your email here..." type="text" name="email" required
+            email ngModel>
+          <div>
+            <mat-error *ngIf="emailInput.touched && emailInput.errors?.required">Email is required</mat-error>
+            <mat-error *ngIf="emailInput.errors?.email">This is not a valid email address.</mat-error>
+          </div>
+        </div>
+        <div class="form-control">
+          <input #passwordInput="ngModel" matInput placeholder="Enter your password here..." type="password"
+            name="password" required minlength="6" ngModel>
+          <div>
+            <mat-error *ngIf="passwordInput.touched && passwordInput.errors?.required">Password is required</mat-error>
+            <mat-error *ngIf="passwordInput.errors?.minlength">The password must be atleast 6 characters long.
+            </mat-error>
+          </div>
+        </div>
+        <button mat-button [disabled]="loginForm.invalid">Login</button>
+      </form>
+    </div>
+  </mat-card>
+</div>

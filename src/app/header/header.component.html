@@ -1,0 +1,36 @@
+<mat-toolbar fxLayout="row" color="primary">
+    <span fxFlex><a routerLink="/" mat-raised-button fxHide.xs>Postgram</a></span>
+    <a [routerLink]="['/profile', userId]" mat-button fxHide.xs *ngIf="isLogged">Profile</a>
+    <a routerLink="/users" mat-button fxHide.xs *ngIf="isLogged">People</a>
+    <a routerLink="/login" mat-button fxHide.xs *ngIf="!isLogged" >Login</a>
+    <a routerLink="/register" mat-button fxHide.xs *ngIf="!isLogged">Register</a>
+    <a mat-button fxHide.xs *ngIf="isLogged" (click)="logOut()">Logout</a>
+    <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #dropMenu="matMenu">
+        <ng-container>
+            <a routerLink="/" mat-menu-item>Postgram</a>
+            <mat-divider></mat-divider>
+        </ng-container>
+        <ng-container>
+            <a [routerLink]="['/profile', userId]" mat-menu-item *ngIf="isLogged">Profile</a>
+            <mat-divider></mat-divider>
+        </ng-container>
+        <ng-container>
+            <a routerLink="/users" mat-menu-item *ngIf="isLogged">People</a>
+            <mat-divider></mat-divider>
+        </ng-container>
+        <ng-container>
+            <a routerLink="/login" mat-menu-item *ngIf="!isLogged">Login</a>
+            <mat-divider></mat-divider>
+        </ng-container>
+        <ng-container>
+            <a routerLink="/register" mat-menu-item *ngIf="!isLogged">Register</a>
+            <mat-divider></mat-divider>
+        </ng-container>
+        <ng-container>
+            <a mat-menu-item *ngIf="isLogged" (click)="logOut()">Logout</a>
+        </ng-container>
+    </mat-menu>
+</mat-toolbar>

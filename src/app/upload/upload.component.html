@@ -1,0 +1,24 @@
+<div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="center">
+  <mat-card class="mat-elevation-z4" fxFlex="50%" fxFlex.lt-md="100%">
+    <h1>Upload Photo</h1>
+    <div class="form-container">
+      <div *ngIf="errorMessage">
+        <mat-error>{{errorMessage}}</mat-error>
+      </div>
+      <form #uploadForm="ngForm" (ngSubmit)="uploadHandler(uploadForm.value); uploadForm.resetForm();">
+        <div class="form-control">
+          <input #imageInput="ngModel" matInput placeholder="Enter your image url here..." type="text" name="imageUrl"
+            required ngModel>
+          <div>
+            <mat-error *ngIf="imageInput.touched && imageInput.errors?.required">Image is required</mat-error>
+          </div>
+        </div>
+        <div class="form-control">
+          <textarea #descInput="ngModel" matInput placeholder="Enter your description here..." name="description"
+            maxlength="250" ngModel></textarea>
+        </div>
+        <button mat-button [disabled]="uploadForm.invalid">Upload</button>
+      </form>
+    </div>
+  </mat-card>
+</div>

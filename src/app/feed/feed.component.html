@@ -1,0 +1,38 @@
+<div class="container" *ngIf="photos?.length !== 0" fxLayout="column" fxLayout.lt-md="column" fxLayoutAlign="space-around center"
+  fxLayoutGap="25px" fxFlex="0 0 calc(33%-25px)" fxFlexFill fxFlex.lt-md="calc(50%-25px)">
+    <mat-card *ngFor="let photo of photos" class="mat-elevation-z4" class="small-card" fxFlex="0 0 calc(33%-25px)" fxFlexFill
+    fxFlex.lt-md="calc(50%-25px)">
+      <mat-card-header>
+        <div mat-card-avatar class="profile-image"></div>
+        <mat-card-title>{{photo?.userId.username}}</mat-card-title>
+        <mat-card-subtitle><a [routerLink]="['/profile', photo?.userId._id]">@{{photo?.userId.username}}</a></mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="photo?.imageUrl">
+      <mat-card-content>
+        <p class="text">
+          {{photo?.description}}
+        </p>
+        <p>Comments: {{photo?.comments.length}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button *ngIf="!photo?.likes.includes(currentUser?._id)" mat-button class="like-btn" (click)="like(photo?._id)"><mat-icon>thumb_up</mat-icon></button>
+        <button *ngIf="photo?.likes.includes(currentUser?._id)" mat-button class="like-btn" (click)="unlike(photo?._id)"><mat-icon>thumb_down</mat-icon></button>
+        <a [routerLink]="['/profile', photo?.userId._id, 'photos', photo?._id]" mat-button>Details</a>
+      </mat-card-actions>
+    </mat-card>
+</div>
+
+<div class="container" *ngIf="photos?.length === 0" fxLayout="column" fxLayout.xs="column" fxLayoutAlign="space-around center"
+  fxLayoutGap="25px" fxFlex="0 0 calc(33%-25px)" fxFlexFill fxFlex.xs="calc(50%-25px)">
+  <mat-card class="mat-elevation-z4" class="small-card">
+    <mat-card-content>
+      <p>There are no photos...</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="1000"
+(scrolled)="onScroll()">
+</div>

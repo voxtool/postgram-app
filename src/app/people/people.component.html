@@ -1,0 +1,17 @@
+<h1>Check out the users of Postgram and follow them if you want to see more</h1>
+<div class="container" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="start" fxLayoutGap="25px">
+  <mat-card *ngFor="let user of users" class="mat-elevation-z4" class="small-card" fxFlex="0 0 calc(20%-25px)"
+    fxFlexFill fxFlex.lt-md="calc(50%-25px)">
+    <mat-card-header>
+      <div mat-card-avatar class="profile-image"></div>
+      <mat-card-title>{{user.username}}<a [routerLink]="['/chat', user.username]" mat-button><mat-icon> mail_outline</mat-icon></a></mat-card-title>
+    </mat-card-header>
+    <mat-card-actions>
+      <button *ngIf="!currentUser.followed.includes(user._id)" mat-button class="follow-btn"
+        (click)="follow(user._id)">Follow</button>
+      <button *ngIf="currentUser.followed.includes(user._id)" mat-button class="follow-btn"
+        (click)="unFollow(user._id)">Unfollow</button>
+      <a [routerLink]="['/profile', user._id]" mat-button>View Profile</a>
+    </mat-card-actions>
+  </mat-card>
+</div>

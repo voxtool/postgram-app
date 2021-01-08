@@ -1,0 +1,27 @@
+mat-card {
+    margin-bottom: 1em;
+}
+
+.container {
+    margin: auto;
+}
+
+.small-card img{
+    height: 40em;
+    object-fit: cover;
+}
+
+.profile-image {
+    background-image: url('https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png');
+    background-size: cover;
+}
+
+.like-btn {
+    background-color: #673AB7;
+    color: white;
+}
+
+.text {
+    -ms-word-break: break-all;
+    word-break: break-all;
+}
