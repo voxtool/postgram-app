@@ -1,6 +1,5 @@
 const jwt = require('./jwt');
-const config = require('../config/config');
-const authCookieName = config.authCookieName;
+const authCookieName = 'auth-token'
 const { User, Token } = require('../models');
 
 function auth(redirectUnauthenticated = true) {
