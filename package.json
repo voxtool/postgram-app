@@ -5,7 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js",
-    "build": "ng build",
+    "build": "ng build --prod",
     "heroku-postbuild": "ng build --prod",
     "dev": "ng serve",
     "test": "ng test",
