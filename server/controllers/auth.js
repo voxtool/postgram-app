@@ -1,6 +1,5 @@
 const { User, Token } = require('../models');
-const config = require('../config/config');
-const authCookieName = config.authCookieName;
+const authCookieName = 'auth-token'
 const utils = require('../utils');
 
 
