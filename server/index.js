@@ -63,7 +63,7 @@ const { Room } = require('./models');
                 console.log('socket disconnected: ' + socket.id);
             });
         });
-        app.get('/', (req, res) => {
+        app.get('*', (req, res) => {
             res.status(200).sendFile(path.join(__basedir, '/static', 'index.html'));
         });
         server.listen(config.port, console.log(`Listening on port ${config.port}...`));
